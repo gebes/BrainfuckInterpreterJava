@@ -19,9 +19,7 @@ public class Main {
         if (args.length != 0) {
             for (String arg : args) {
                 String content = loadScriptFile(new File(arg));
-                BrainfuckInterpreter brainfuckInterpreter = new BrainfuckInterpreter(content);
-                brainfuckInterpreter.execute();
-                System.out.println();
+                executeScript(content);
             }
             return;
         }
@@ -29,12 +27,15 @@ public class Main {
         while (true) {
             File scriptFile = selectScriptFile();
             String content = loadScriptFile(scriptFile);
-
-            BrainfuckInterpreter brainfuckInterpreter = new BrainfuckInterpreter(content);
-            brainfuckInterpreter.execute();
-            System.out.println();
+            executeScript(content);
         }
 
+    }
+
+    private static void executeScript(String script){
+        BrainfuckInterpreter brainfuckInterpreter = new BrainfuckInterpreter(script);
+        brainfuckInterpreter.execute();
+        System.out.println();
     }
 
     private static File selectScriptFile() {
