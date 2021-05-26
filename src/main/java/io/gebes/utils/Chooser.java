@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
+import java.sql.SQLOutput;
 import java.util.*;
 
 /**
@@ -52,6 +53,7 @@ public class Chooser<Option> {
         do{
             selection = scanner.nextInt()-1;
         }while(selection < 0 || selection >= selectables.size());
+
 
         return selectables.get(selection).getOption();
     }
