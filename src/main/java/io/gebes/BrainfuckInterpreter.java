@@ -18,11 +18,13 @@ public class BrainfuckInterpreter {
 
     final Scanner scanner = new Scanner(System.in);
     final int length = 65535;
-    byte[] memory = new byte[length];
-    int pointer;
+    byte[] memory;
+
 
     public void execute(){
-        reset();
+        memory = new byte[length];
+        int pointer = 0;
+        int loopPointer = 0;
         for(int i = 0; i < code.length(); i++) {
             if(code.charAt(i) == '>') {
                 pointer = (pointer == length -1) ? 0 : pointer + 1;
@@ -39,18 +41,18 @@ public class BrainfuckInterpreter {
             } else if(code.charAt(i) == '[') {
                 if(memory[pointer] == 0) {
                     i++;
-                    while(pointer > 0 || code.charAt(i) != ']') {
-                        if(code.charAt(i) == '[') pointer++;
-                        if(code.charAt(i) == ']') pointer--;
+                    while(loopPointer > 0 || code.charAt(i) != ']') {
+                        if(code.charAt(i) == '[') loopPointer++;
+                        if(code.charAt(i) == ']') loopPointer--;
                         i++;
                     }
                 }
             } else if(code.charAt(i) == ']') {
                 if(memory[pointer] != 0) {
                     i--;
-                    while(pointer > 0 || code.charAt(i) != '[') {
-                        if(code.charAt(i) == ']') pointer++;
-                        if(code.charAt(i) == '[') pointer--;
+                    while(loopPointer > 0 || code.charAt(i) != '[') {
+                        if(code.charAt(i) == ']') loopPointer++;
+                        if(code.charAt(i) == '[') loopPointer--;
                         i--;
                     }
                     i--;
@@ -59,9 +61,5 @@ public class BrainfuckInterpreter {
         }
     }
 
-    private void reset(){
-        pointer = 0;
-        memory = new byte[length];
-    }
 
 }
