@@ -48,7 +48,9 @@ public class Loader {
                 try{
                     String content = loadScriptFile(scriptFile);
                     brainfuckInterpreter = new BrainfuckInterpreter(content);
-                }catch(IOException e){}
+                }catch(IOException e){
+                    throw new RuntimeException(e);
+                }
             }
 
             brainfuckInterpreter.execute();
@@ -75,7 +77,7 @@ public class Loader {
 
         for (File file : Objects.requireNonNull(SCRIPTS_FOLDER.listFiles())) {
             if (file.isFile() && file.getName().endsWith(".brainfuck"))
-                chooser.add(file.getName(), SCRIPTS_FOLDER + "\\" + file.getName());
+                chooser.add(file.getName(), SCRIPTS_FOLDER + "/" + file.getName());
         }
 
         if (!chooser.hasSelectables()) {
