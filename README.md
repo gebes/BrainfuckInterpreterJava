@@ -16,4 +16,4 @@ Easy to use Brainfuck interpreter written in Java with several example [scripts]
 ![Usage](https://i.imgur.com/bgWLcCx.png)
 
 # Motivation
-Brainfuck is a "fun" language to play around with. The initial motivation was to use it as a small school project, but we cancelled the idea. Still, we created this project.
+Brainfuck is a "fun" language to play around with. The initial motivation was to use it as a small school project, but we decided to use something more remarkable instead. Still, we created this project.
